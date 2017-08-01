@@ -17,7 +17,7 @@ function addItemToCart(itemParent) {
       cartItemCount = document.getElementById('cart-item-count'),
       cartItemSection = document.getElementById('cart-item-section')
 
-  cartItemCount.textContent = parseInt(cartItemCount.textContent) + 1;
+  cartItemCount.textContent = parseInt(cartItemCount.textContent) + 1
 
 	const cartItemElement = document.createElement('li')
   const cartItemName = document.createElement('span')

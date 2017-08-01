@@ -13,13 +13,13 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/days/:day', (request, response) => {
-  if (daysOfWeek.hasOwnProperty(request.params.day)) {
-    response.set('Content-Type', 'text/html')
-    var dayNum = daysOfWeek[request.params.day]
-    response.status(200).send({response: dayNum})
-  } else {
+  if (!daysOfWeek.hasOwnProperty(request.params.day)) {
     response.set('Content-Type', 'application/text')
     response.status(400).send(request.params.day + ' is not a valid day!')
+  } else {
+    response.set('Content-Type', 'application/text')
+    var dayNum = daysOfWeek[request.params.day]
+    response.status(200).send({response: dayNum})
   }
 })
 
@@ -34,6 +34,7 @@ function arrayFormattedCorrectly(array) {
     return false
   }
 }
+
 app.post('/api/arrays/concat', (request, response) => {
   const string1 = request.body.string1
   const string2 = request.body.string2
