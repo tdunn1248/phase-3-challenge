@@ -13,14 +13,16 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/days/:day', (request, response) => {
-  if (!(daysOfWeek.hasOwnProperty(request.params.day))) {
-    response.set('Content-Type', 'application/text')
-    response.status(400).send(request.params.day + ' is not a valid day!')
+  if (daysOfWeek.hasOwnProperty(request.params.day)) {
+    response.set('Content-Type', 'text/html')
+    var dayNum = daysOfWeek[request.params.day]
+    response.status(200).send({response: dayNum})
   } else {
     response.set('Content-Type', 'application/text')
-    response.status(200).send(daysOfWeek[request.params.day])
+    response.status(400).send(request.params.day + ' is not a valid day!')
   }
 })
+
 function arrayFormattedCorrectly(array) {
   if(array.endsWith(']')) {
     if(array.startsWith('[')) {
