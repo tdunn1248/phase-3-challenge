@@ -1,13 +1,10 @@
 fs = require('fs');
 
-const hardCodeSeed = fs.readFileSync('./models/hardCodeSeed.sql', 'utf8', (error, data) => {
-  if (error) throw error
-  return data
-})
 
-fs.readFileSync('./models/grocery.csv', 'utf8', (err, data) => {
+fs.readFile('./models/grocery.csv', 'utf8', (err, data) => {
   if (err) {
-    return null
+    console.log('we got an error');
+    throw err
   }
   let items = data.split('\n')
   const fields = items[0]
@@ -21,11 +18,17 @@ fs.readFileSync('./models/grocery.csv', 'utf8', (err, data) => {
       sql += row
     }
   })
+  
   fs.writeFileSync('./models/load-data.sql', sql, 'utf8', (err) => {
-    if (!err) console.log('Yaad!')
+    if (err) console.error(err)
   })
-})
 
-fs.appendFileSync('./models/load-data.sql', hardCodeSeed, (error) => {
-  if (error) throw error
+  const hardCodeSeed = fs.readFileSync('./models/hardCodeSeed.sql', 'utf8', (error, data) => {
+    if (error) throw error
+    return data
+  })
+
+  fs.appendFileSync('./models/load-data.sql', hardCodeSeed, (error) => {
+    if (error) throw error
+  })
 })

@@ -7,6 +7,7 @@ const userInput = (command, argument) => {
     case 'product-list':
       productList(argument)
         .then(results => {
+          console.log(results);
           formatTable(results)
           results.forEach(record => {
             console.log(record.name, "  ", record.section);

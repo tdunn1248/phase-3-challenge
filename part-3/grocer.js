@@ -55,4 +55,5 @@ function clearCart() {
   var cartSection = document.getElementById('cart-item-section')
   cartSection.remove()
   calculateTotal()
+  document.getElementById('cart-item-count').textContent = 0 
 }
