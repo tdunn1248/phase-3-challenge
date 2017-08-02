@@ -7,4 +7,4 @@ connectionString = process.env.TEST_DATABASE_URL
 
 const db = pgp(connectionString)
 
-console.log(db);
+module.exports = db

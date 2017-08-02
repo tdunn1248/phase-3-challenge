@@ -2,10 +2,9 @@
   "name": "part-2",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "store.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha || true",
-    "start": "node app.js"
+    "test": "NODE_ENV=test mocha || true"
   },
   "author": "",
   "license": "ISC",

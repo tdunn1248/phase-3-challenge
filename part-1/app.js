@@ -5,6 +5,8 @@ const port = 3008
 
 const daysOfWeek = {monday: 1, tuesday:2, wednesday: 3, thursday: 4, friday: 5, saturday: 6, sunday: 7}
 
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.get('/', (request, response) => {
   response.send('<h1>Simple Web App</h1>')
@@ -14,7 +16,6 @@ app.get('/api/days/:day', (request, response) => {
   /*
   When the parameter is an Array or Object, Express responds
   with the JSON representation:
-  ask punit
   */
   response.set('Content-Type', 'text/html')
   if (daysOfWeek.hasOwnProperty(request.params.day)) {

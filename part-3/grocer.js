@@ -48,7 +48,7 @@ function calculateTotal() {
     var price = parseFloat(pricey)
     cartTotal +=  price
   })
-  document.getElementsByClassName('cart-total')[0].innerHTML = '$' + cartTotal
+  document.getElementsByClassName('cart-total')[0].innerHTML = '$' + cartTotal.toFixed(2)
 }
 
 function clearCart() {
