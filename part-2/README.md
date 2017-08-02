@@ -7,4 +7,4 @@
 - To Insert Data run the command:
 ```psql grocery_store -f ./models/load-data.sql```
 
-- I called the "order" table  "basket" to avoid using an SQL reserved keyword of order
+- I called the "order" table  "basket" to avoid using the SQL reserved keyword of order
