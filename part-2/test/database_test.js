@@ -12,6 +12,7 @@ describe('database queries', function() {
       expect(results[6]).to.be.eql({ name: 'Yogurt', section: 'dairy' })
     })
   })
+
   it('shopperOrders() lists the orders for a given shopper', function() {
     return shopperOrders(5).then(results => {
       expect(results.length).to.be.equal(1)
@@ -19,6 +20,7 @@ describe('database queries', function() {
       expect(results[0]).to.be.eql({ id: 5, total_cost: '55.34' })
     })
   })
+
   it('realShoppers() lists the names of all shoppers who have atleast 1 order', function() {
     return realShoppers().then(results => {
       expect(results.length).to.be.equal(8)
