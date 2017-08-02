@@ -17,7 +17,7 @@ fs.readFileSync('./models/grocery.csv', 'utf8', (err, data) => {
     if (value) {
       let item = value.split(',')
       const values = `'${item[0]}', ${item[1]}, '${item[2]}'`
-      let row = `INSERT INTO groceries (${fields}) VALUES(${values});\n`;
+      let row = `INSERT INTO grocery (${fields}) VALUES(${values});\n`;
       sql += row
     }
   })
