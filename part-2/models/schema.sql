@@ -1,7 +1,7 @@
 DROP TABLE IF EXISTS shopper CASCADE;
 DROP TABLE IF EXISTS grocery CASCADE;
-DROP TABLE IF EXISTS basket CASCADE;
-DROP TABLE IF EXISTS basket_detail CASCADE;
+DROP TABLE IF EXISTS orders CASCADE;
+DROP TABLE IF EXISTS orders_detail CASCADE;
 
 CREATE TABLE shopper (
   id SERIAL PRIMARY KEY,
@@ -15,15 +15,15 @@ CREATE TABLE grocery (
   section VARCHAR(30)
 );
 
-CREATE TABLE basket (
+CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   shopper_id integer REFERENCES shopper (id),
   quanity INT,
   total_cost NUMERIC
 );
 
-CREATE TABLE basket_detail(
+CREATE TABLE orders_detail (
   id SERIAL PRIMARY KEY,
-  basket_id integer REFERENCES basket(id),
+  orders_id integer REFERENCES orders(id),
   grocery_id integer REFERENCES grocery(id)
 );

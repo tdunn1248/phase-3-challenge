@@ -5,10 +5,11 @@
   "main": "app.js",
   "dependencies": {
     "body-parser": "^1.17.2",
-    "express": "^4.15.3",
+    "express": "^4.15.3"
+  },
+  "devDependencies": {
     "nodemon": "^1.11.0"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"

@@ -3,7 +3,6 @@ fs = require('fs');
 
 fs.readFile('./models/grocery.csv', 'utf8', (err, data) => {
   if (err) {
-    console.log('we got an error');
     throw err
   }
   let items = data.split('\n')
@@ -18,9 +17,9 @@ fs.readFile('./models/grocery.csv', 'utf8', (err, data) => {
       sql += row
     }
   })
-  
+
   fs.writeFileSync('./models/load-data.sql', sql, 'utf8', (err) => {
-    if (err) console.error(err)
+    if (err) throw error
   })
 
   const hardCodeSeed = fs.readFileSync('./models/hardCodeSeed.sql', 'utf8', (error, data) => {

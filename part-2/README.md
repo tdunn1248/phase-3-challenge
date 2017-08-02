@@ -7,7 +7,7 @@
 ```node ./models/seed.js```
 - This will write to the load-data.sql file with all the insert statements to populate the Database
 
-- 3. To Insert Data run the command:
+- 3. To populate the database run:
 ```psql grocery_store -f ./models/load-data.sql```
 
-- I called the "order" table  "basket" to avoid using the SQL reserved keyword of order
+## Setup TestDatabase is same sequence only ```./models/<filename>``` is replaced with ```./test/<filename>```
