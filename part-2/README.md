@@ -10,4 +10,6 @@
 - 3. To populate the database run:
 ```psql grocery_store -f ./models/load-data.sql```
 
-## Setup TestDatabase is same sequence only ```./models/<filename>``` is replaced with ```./test/<filename>```
+## To Setup Test Database:
+1. Load Schema: ```psql grocery_store -f ./test/schema_test.sql```
+2. To populate database: ```psql grocery_store -f ./test/load-test-data.sql```

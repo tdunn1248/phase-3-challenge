@@ -4,7 +4,8 @@
   "description": "",
   "main": "store.js",
   "scripts": {
-    "test": "NODE_ENV=test mocha || true"
+    "test": "NODE_ENV=test mocha || true",
+    "populate-load-data": "node ./models/seed.js"
   },
   "author": "",
   "license": "ISC",
