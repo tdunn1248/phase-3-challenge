@@ -152,7 +152,7 @@ $ ./store real-shoppers
 
 User Stories: Ensure that your schema design can satisfy the following scenarios
 - [X] __10__: As a shopper I can fetch all my orders
-- [ ] __10__: As a shopper I can have multiple items in an order. (Assume the quantity of each item is always 1)
+- [X] __10__: As a shopper I can have multiple items in an order. (Assume the quantity of each item is always 1)
 
 Command line interface requirements
 - [X] __10__: Create a command line Node script called `store.js`
