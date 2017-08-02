@@ -14,7 +14,7 @@ app.get('/', (request, response) => {
 })
 
 app.get('/api/days/:day', (request, response) => {
-  response.set('Content-Type', 'text/html')
+  response.set('Content-Type', 'application/text')
   if (daysOfWeek.hasOwnProperty(request.params.day)) {
     const dayNumber = daysOfWeek[request.params.day]
     response.status(200).send({response: dayNumber})
