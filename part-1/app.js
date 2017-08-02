@@ -19,7 +19,7 @@ app.get('/api/days/:day', (request, response) => {
     const dayNumber = daysOfWeek[request.params.day]
     response.status(200).send({response: dayNumber})
   } else {
-    response.json({error: request.params.day + ' is not a valid day'})
+    response.status(400).send({error: request.params.day + ' is not a valid day'})
   }
 })
 
