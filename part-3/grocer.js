@@ -101,5 +101,4 @@ function removeBlurr() {
   document.getElementsByClassName('site-header')[0].classList.remove('blur')
   document.getElementsByClassName('sidebar')[0].classList.remove('blur')
   document.getElementsByClassName('content')[0].classList.remove('blur')
-
 }

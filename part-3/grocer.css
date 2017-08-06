@@ -127,7 +127,7 @@ body {
   box-sizing: border-box;
   display: flex;
   position: absolute;
-  background-color: pink;
+  background-color: #a9a9a9;
   border-radius: 10px;
   width: 400px;
   height: 400px;
@@ -149,6 +149,7 @@ body {
 }
 .close-cart-btn {
   margin-right: 1em;
+  background-color: red;
 }
 .shopping-cart-ul-contain {
   display: flex;
@@ -164,6 +165,7 @@ body {
   flex-direction: column;
   width: 75%;
   border: 2px solid black;
+  border-radius: 1em;
   list-style-type: none;
   height: 75%;
   justify-content: space-around;
