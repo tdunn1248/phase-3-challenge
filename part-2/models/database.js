@@ -9,7 +9,7 @@ function shopperOrders(id) {
 }
 
 function realShoppers() {
-  return db.any('SELECT DISTINCT shopper.name, orders.quanity FROM shopper, orders WHERE shopper.id = basket.shopper_id')
+  return db.any('SELECT DISTINCT shopper.name, orders.quanity FROM shopper, orders WHERE shopper.id = orders.shopper_id')
 }
 
 module.exports = {

@@ -6,8 +6,11 @@ const port = 3008
 
 const daysOfWeek = {monday: 1, tuesday:2, wednesday: 3, thursday: 4, friday: 5, saturday: 6, sunday: 7}
 
+// add request.body to request object with every request
 app.use(bodyParser.urlencoded({ extended: false }))
+// only looks at request that have Content-Type set to json
 app.use(bodyParser.json())
+// need bodyparser.text() ?
 
 app.get('/', (request, response) => {
   response.send('<h1>Simple Web App</h1>')

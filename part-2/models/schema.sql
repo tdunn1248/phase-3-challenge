@@ -1,4 +1,3 @@
--- DROP table if exists and cascade delete all dependencies
 DROP TABLE IF EXISTS shopper CASCADE;
 DROP TABLE IF EXISTS grocery CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
@@ -19,14 +18,14 @@ CREATE TABLE grocery (
 
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
-  shopper_id integer REFERENCES shopper (id),
+  shopper_id integer REFERENCES shopper(id),
   quanity INT,
   total_cost NUMERIC
 );
 
--- // join table to see contents of order. Needs to reference an order and grocery item
 CREATE TABLE orders_detail (
   id SERIAL PRIMARY KEY,
   orders_id integer REFERENCES orders(id),
+  -- quanity defaults to 1
   grocery_id integer REFERENCES grocery(id)
 );

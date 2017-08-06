@@ -53,7 +53,7 @@ function clearCartContents() {
   if(cart.length === 0) {
    while( shoppingCart.firstChild ) {
      shoppingCart.removeChild( shoppingCart.firstChild )
-     cartTotal.innerHTML = '$0.00'
+     resetCartCount()
     }
   }
 }
@@ -65,7 +65,6 @@ function resetCartCount() {
 function clearCart() {
   cart = []
   clearCartContents()
-  resetCartCount()
 }
 
 function toggleModal() {

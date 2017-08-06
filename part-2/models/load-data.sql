@@ -39,7 +39,7 @@ INSERT INTO grocery (name,price,section) VALUES('Soda', 11.21, 'miscellaneous');
 INSERT INTO grocery (name,price,section) VALUES('Sour Cream', 1.73, 'dairy');
 INSERT INTO grocery (name,price,section) VALUES('Tomatoes', 1.56, 'produce');
 INSERT INTO grocery (name,price,section) VALUES('Yogurt', 18.67, 'dairy');
-INSERT INTO shopper (id, name)VALUES(default, 'Mary');
+INSERT INTO shopper (id, name)VALUES(default, 'Bubba');
 INSERT INTO shopper (id, name)VALUES(default, 'Shanti');
 INSERT INTO shopper (id, name)VALUES(default, 'Mohammad');
 INSERT INTO shopper (id, name)VALUES(default, 'Ethan');
