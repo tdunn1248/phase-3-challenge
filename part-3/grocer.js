@@ -1,4 +1,3 @@
-
 const modalDiv = document.getElementsByClassName('modal-div')[0]
 const shoppingCart = document.getElementsByClassName('shopping-cart-ul')[0]
 const cartTotal = document.getElementsByClassName('cart-price-total')[0]
@@ -43,12 +42,20 @@ function cartMath() {
       calculatedTotal += productValue
     }
   }
-  console.log('what');
   cartTotal.innerHTML = '$' + calculatedTotal.toFixed(2)
 }
 
 function addCartCount() {
   cartItemCount.textContent = parseInt(cartItemCount.textContent) + 1
+}
+
+function clearCartContents() {
+  if(cart.length === 0) {
+   while( shoppingCart.firstChild ) {
+     shoppingCart.removeChild( shoppingCart.firstChild )
+     cartTotal.innerHTML = '$0.00'
+    }
+  }
 }
 
 function resetCartCount() {
@@ -57,30 +64,27 @@ function resetCartCount() {
 
 function clearCart() {
   cart = []
+  clearCartContents()
   resetCartCount()
 }
 
 function toggleModal() {
   if (modalDiv.style.visibility == 'visible') {
-    modalDiv.style.visibility = 'hidden'
     removeBlurr()
   } else {
     modalDiv.style.visibility = 'visible'
     blurr()
-    // runningCart()
   }
 }
 
 document.getElementsByClassName('sidebar')[0].addEventListener('click', function() {
   if (modalDiv.style.visibility == 'visible') {
-    modalDiv.style.visibility = 'hidden'
     removeBlurr()
   }
 })
 
 document.getElementsByClassName('content')[0].addEventListener('click', function() {
   if (modalDiv.style.visibility == 'visible') {
-    modalDiv.style.visibility = 'hidden'
     removeBlurr()
   }
 })
