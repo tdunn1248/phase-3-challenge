@@ -18,34 +18,14 @@ for (let i = 0; i < addToCartBtns.length; i++) {
 function pushToCart(product, price) {
   cart.push(product)
   cart.push(price)
+  appendToList(product, price)
+  cartMath()
   addCartCount()
-}
-
-function renderCartItems() {
-  if(cart.length === 0) {
-    while( shoppingCart.firstChild ) {
-      shoppingCart.removeChild( shoppingCart.firstChild )
-      cartTotal.innerHTML = '$0.00'
-    }
-  } else {
-    const listItem = document.createElement('li')
-    const listPrice = document.createElement('span')
-    for (let i = 0; i < cart.length; i++) {
-      if(i % 2 === 0) {
-        const name = cart[i]
-        i = i + 1
-        const price = cart[i]
-        appendToList(name, price)
-      }
-    }
-    cartMath()
-  }
 }
 
 function appendToList(name, price) {
   const listItem = document.createElement('li')
   const listPrice = document.createElement('span')
-  listItem.classList.add('yea')
   listItem.innerHTML = name
   listPrice.innerHTML = price
   listItem.appendChild(listPrice)
@@ -63,6 +43,7 @@ function cartMath() {
       calculatedTotal += productValue
     }
   }
+  console.log('what');
   cartTotal.innerHTML = '$' + calculatedTotal.toFixed(2)
 }
 
@@ -77,19 +58,16 @@ function resetCartCount() {
 function clearCart() {
   cart = []
   resetCartCount()
-  renderCartItems()
 }
 
 function toggleModal() {
   if (modalDiv.style.visibility == 'visible') {
     modalDiv.style.visibility = 'hidden'
-    document.getElementsByClassName('site-header')[0].classList.remove('blur')
-    document.getElementsByClassName('sidebar')[0].classList.remove('blur')
-    document.getElementsByClassName('content')[0].classList.remove('blur')
+    removeBlurr()
   } else {
     modalDiv.style.visibility = 'visible'
     blurr()
-    renderCartItems()
+    // runningCart()
   }
 }
 
@@ -115,7 +93,9 @@ function blurr() {
 }
 
 function removeBlurr() {
+  document.getElementsByClassName('modal-div')[0].style.visibility= 'hidden'
   document.getElementsByClassName('site-header')[0].classList.remove('blur')
   document.getElementsByClassName('sidebar')[0].classList.remove('blur')
   document.getElementsByClassName('content')[0].classList.remove('blur')
+
 }
