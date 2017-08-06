@@ -1,13 +1,12 @@
 
 const modalDiv = document.getElementsByClassName('modal-div')[0]
 const shoppingCart = document.getElementsByClassName('shopping-cart-ul')[0]
+const cartTotal = document.getElementsByClassName('cart-price-total')[0]
 const addToCartBtns = document.getElementsByClassName('add-to-cart-btn')
-const listie = document.createElement('li')
+let cartItemCount = document.getElementsByClassName('cart-item-count')[0]
 
-const cart = []
+let cart = []
 
-
-// window onload function
 for (let i = 0; i < addToCartBtns.length; i++) {
   addToCartBtns[i].addEventListener('click', function() {
     const itemPrice = addToCartBtns[i].previousElementSibling
@@ -19,28 +18,66 @@ for (let i = 0; i < addToCartBtns.length; i++) {
 function pushToCart(product, price) {
   cart.push(product)
   cart.push(price)
+  addCartCount()
 }
 
 function renderCartItems() {
-  const listItem = document.createElement('li')
-  const listPrice = document.createElement('span')
-  for (let i = 0; i < cart.length; i++) {
-    if(i % 2 === 0) {
-      const name = cart[i]
-      i = i + 1
-      const price = cart[i]
-      appendToList(name, price)
+  if(cart.length === 0) {
+    while( shoppingCart.firstChild ) {
+      shoppingCart.removeChild( shoppingCart.firstChild )
+      cartTotal.innerHTML = '$0.00'
     }
+  } else {
+    const listItem = document.createElement('li')
+    const listPrice = document.createElement('span')
+    for (let i = 0; i < cart.length; i++) {
+      if(i % 2 === 0) {
+        const name = cart[i]
+        i = i + 1
+        const price = cart[i]
+        appendToList(name, price)
+      }
+    }
+    cartMath()
   }
 }
 
 function appendToList(name, price) {
   const listItem = document.createElement('li')
   const listPrice = document.createElement('span')
+  listItem.classList.add('yea')
   listItem.innerHTML = name
   listPrice.innerHTML = price
   listItem.appendChild(listPrice)
   shoppingCart.appendChild(listItem)
+}
+
+function cartMath() {
+  let calculatedTotal = 0
+  for (let i = 0; i < cart.length; i++) {
+    if(i % 2 == 0) {
+      // don't worry about it
+    } else {
+      const removeSymbol = cart[i].substr(1)
+      const productValue = parseFloat(removeSymbol)
+      calculatedTotal += productValue
+    }
+  }
+  cartTotal.innerHTML = '$' + calculatedTotal.toFixed(2)
+}
+
+function addCartCount() {
+  cartItemCount.textContent = parseInt(cartItemCount.textContent) + 1
+}
+
+function resetCartCount() {
+  cartItemCount.textContent = parseInt('0.00')
+}
+
+function clearCart() {
+  cart = []
+  resetCartCount()
+  renderCartItems()
 }
 
 function toggleModal() {
@@ -51,29 +88,34 @@ function toggleModal() {
     document.getElementsByClassName('content')[0].classList.remove('blur')
   } else {
     modalDiv.style.visibility = 'visible'
-    document.getElementsByClassName('site-header')[0].classList.add('blur')
-    document.getElementsByClassName('sidebar')[0].classList.add('blur')
-    document.getElementsByClassName('content')[0].classList.add('blur')
+    blurr()
     renderCartItems()
   }
 }
 
-// hackey way to blur background
 document.getElementsByClassName('sidebar')[0].addEventListener('click', function() {
   if (modalDiv.style.visibility == 'visible') {
     modalDiv.style.visibility = 'hidden'
-    document.getElementsByClassName('site-header')[0].classList.remove('blur')
-    document.getElementsByClassName('sidebar')[0].classList.remove('blur')
-    document.getElementsByClassName('content')[0].classList.remove('blur')
+    removeBlurr()
   }
 })
 
 document.getElementsByClassName('content')[0].addEventListener('click', function() {
   if (modalDiv.style.visibility == 'visible') {
     modalDiv.style.visibility = 'hidden'
-    document.getElementsByClassName('site-header')[0].classList.remove('blur')
-    document.getElementsByClassName('sidebar')[0].classList.remove('blur')
-    document.getElementsByClassName('content')[0].classList.remove('blur')
+    removeBlurr()
   }
 })
-// =================== //
+
+// hackey way to blur background
+function blurr() {
+  document.getElementsByClassName('site-header')[0].classList.add('blur')
+  document.getElementsByClassName('sidebar')[0].classList.add('blur')
+  document.getElementsByClassName('content')[0].classList.add('blur')
+}
+
+function removeBlurr() {
+  document.getElementsByClassName('site-header')[0].classList.remove('blur')
+  document.getElementsByClassName('sidebar')[0].classList.remove('blur')
+  document.getElementsByClassName('content')[0].classList.remove('blur')
+}
