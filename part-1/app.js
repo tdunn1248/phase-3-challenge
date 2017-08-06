@@ -15,9 +15,12 @@ app.get('/', (request, response) => {
 
 app.get('/api/days/:day', (request, response) => {
   response.set('Content-Type', 'application/text')
+
   if (daysOfWeek.hasOwnProperty(request.params.day)) {
+
     const dayNumber = daysOfWeek[request.params.day]
     response.status(200).send({response: dayNumber})
+
   } else {
     response.status(400).send({error: request.params.day + ' is not a valid day'})
   }
@@ -26,16 +29,20 @@ app.get('/api/days/:day', (request, response) => {
 app.post('/api/arrays/concat', (request, response) => {
   const string1 = request.body.string1
   const string2 = request.body.string2
+
   if(arrayFormattedCorrectly(string1) === false || arrayFormattedCorrectly(string2) === false) {
     response.status(400).json({error: 'Input data should be type Array'})
   } else {
     const str1 = string1.replace(/[[\]]/g,'')
     const str2 = string2.replace(/[[\]]/g,'')
+
     const array1 = str1.split(",")
     const array2 = str2.split(",")
+
     const results = array1.concat(array2)
 
     response.set('Content-Type', 'application/json')
+
     response.status(200).json({response: results})
   }
 })

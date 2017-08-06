@@ -5,11 +5,11 @@ function productList(section) {
 }
 
 function shopperOrders(id) {
-  return db.any('SELECT basket.id, total_cost FROM basket WHERE shopper_id = $1', [id])
+  return db.any('SELECT orders.id, total_cost FROM orders WHERE shopper_id = $1', [id])
 }
 
 function realShoppers() {
-  return db.any('SELECT DISTINCT shopper.name, basket.quanity FROM shopper, basket WHERE shopper.id = basket.shopper_id')
+  return db.any('SELECT DISTINCT shopper.name, orders.quanity FROM shopper, orders WHERE shopper.id = basket.shopper_id')
 }
 
 module.exports = {

@@ -1,3 +1,6 @@
+/* helper function that returns true or false
+    if the string starts with or ends with []*/
+
 function arrayFormattedCorrectly(array) {
   if(array.endsWith(']')) {
     if(array.startsWith('[')) {
@@ -10,4 +13,5 @@ function arrayFormattedCorrectly(array) {
   }
 }
 
+// export it to the global scope
 module.exports = {arrayFormattedCorrectly}

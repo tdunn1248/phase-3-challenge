@@ -11,88 +11,88 @@
       <h1>Grocer</h1>
       <button type="button" id="cart-button" onclick='toggleModal()'>
         Cart
-        &nbsp;&#40;<span id="cart-item-count">0</span>&#41;
+        &nbsp;<span id="cart-item-count">(0)</span>
       </button>
     </header>
+
+
+
+    <div class="modal-div">
+      <div class="shopping-cart-ul-contain">
+        <div class='shopping-cart-header'>
+          <h2>Cart</h2>
+          <button class='close-cart-btn'>
+        </div>
+
+        <ul class='shopping-cart-ul'>
+        </ul>
+        <div class="cart-footer">
+          <button type='button' class='clear-cart-btn'></button>
+          <span class='cart-price-total'>$0.00</span>
+        </div>
+      </div>
+    </div>
+
 
     <div class="flex flex-full">
       <div class="sidebar">
         <ul>
           <h4>Sections</h4>
-          <li><a href="#produce">Produce</a></li>
-          <li><a href="#deli">Deli</a></li>
-          <li><a href="#frozen">Frozen</a></li>
+          <li>Produce</li>
+          <li>Deli</li>
+          <li>Frozen</li>
         </ul>
       </div>
       <div class="content">
         <h1>Groceries</h1>
         <ul class="item-section">
-          <h3 id='produce'>Produce</h3>
+          <h3>Produce</h3>
           <li class="item flex flex-row-between">
             <span class="item-name">Onions</span>
             <span class="item-price">$1.11</span>
-            <button type="button" class="item-buy-button">Add to cart</button>
+            <button type="button" class='add-to-cart-btn'>Add to cart</button>
           </li>
           <li class="item flex flex-row-between">
             <span class="item-name">Tomatoes</span>
             <span class="item-price">$1.56</span>
-            <button type="button" class="item-buy-button">Add to cart</button>
+            <button type="button" class='add-to-cart-btn'>Add to cart</button>
           </li>
           <li class="item flex flex-row-between">
             <span class="item-name">Carrots</span>
             <span class="item-price">$2.88</span>
-            <button type="button" class="item-buy-button">Add to cart</button>
+            <button type="button" class='add-to-cart-btn'>Add to cart</button>
           </li>
         </ul>
 
         <ul class="item-section">
-          <h3 id='deli'>Deli</h3>
+          <h3>Deli</h3>
           <li class="item flex flex-row-between">
             <span class="item-name">Cold Cuts</span>
             <span class="item-price">$1.47</span>
-            <button type="button" class="item-buy-button">Add to cart</button>
+            <button type="button" class='add-to-cart-btn'>Add to cart</button>
           </li>
         </ul>
 
         <ul class="item-section">
-          <h3 id='frozen'>Frozen</h3>
+          <h3>Frozen</h3>
           <li class="item flex flex-row-between">
             <span class="item-name">Orange Juice</span>
             <span class="item-price">$2.52</span>
-            <button type="button" class="item-buy-button">Add to cart</button>
+            <button type="button" class='add-to-cart-btn'>Add to cart</button>
           </li>
           <li class="item flex flex-row-between">
             <span class="item-name">Ice Cream</span>
             <span class="item-price">$14.08</span>
-            <button type="button" class="item-buy-button">Add to cart</button>
+            <button type="button" class='add-to-cart-btn'>Add to cart</button>
           </li>
           <li class="item flex flex-row-between">
             <span class="item-name">Pizza</span>
             <span class="item-price">$16.61</span>
-            <button type="button" class="item-buy-button">Add to cart</button>
+            <button type="button" class='add-to-cart-btn'>Add to cart</button>
           </li>
         </ul>
       </div>
-
-      <div id="modal">
-        <div class='cart'>
-
-          <div class="cart-header">
-            <h2>Cart</h2>
-            <button type="button" name="button" onclick="toggleModal()">X</button>
-          </div>
-
-          <ul class="item-section" id="cart-item-section"></ul>
-
-          <div class="cart-footer">
-            <button class='btn-cart-clear' onclick="clearCart()" type="button" name="button">Clear</button>
-            <p>Total: <span class='cart-total'>$12.88</span></p>
-          </div>
-        </div>
-
-      </div>
     </div>
-
-    <script src="grocer.js" charset="utf-8"></script>
+    <script src="grocer.js"type="text/javascript"></script>
   </body>
 </html>

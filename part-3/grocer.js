@@ -1,59 +1,79 @@
-function toggleModal() {
-  calculateTotal()
-	const el = document.getElementById("modal");
-	el.style.visibility = (el.style.visibility == "visible") ? "hidden" : "visible";
+
+const modalDiv = document.getElementsByClassName('modal-div')[0]
+const shoppingCart = document.getElementsByClassName('shopping-cart-ul')[0]
+const addToCartBtns = document.getElementsByClassName('add-to-cart-btn')
+const listie = document.createElement('li')
+
+const cart = []
+
+
+// window onload function
+for (let i = 0; i < addToCartBtns.length; i++) {
+  addToCartBtns[i].addEventListener('click', function() {
+    const itemPrice = addToCartBtns[i].previousElementSibling
+    const itemName= itemPrice.previousElementSibling
+    pushToCart(itemName.innerHTML, itemPrice.innerHTML)
+  })
 }
 
-const buyButtons = document.querySelectorAll('.item-buy-button')
-buyButtons.forEach(function(button){
-  button.addEventListener('click', function(){
-		addItemToCart(button.parentNode)
-	})
+function pushToCart(product, price) {
+  cart.push(product)
+  cart.push(price)
+}
+
+function renderCartItems() {
+  const listItem = document.createElement('li')
+  const listPrice = document.createElement('span')
+  for (let i = 0; i < cart.length; i++) {
+    if(i % 2 === 0) {
+      const name = cart[i]
+      i = i + 1
+      const price = cart[i]
+      appendToList(name, price)
+    }
+  }
+}
+
+function appendToList(name, price) {
+  const listItem = document.createElement('li')
+  const listPrice = document.createElement('span')
+  listItem.innerHTML = name
+  listPrice.innerHTML = price
+  listItem.appendChild(listPrice)
+  shoppingCart.appendChild(listItem)
+}
+
+function toggleModal() {
+  if (modalDiv.style.visibility == 'visible') {
+    modalDiv.style.visibility = 'hidden'
+    document.getElementsByClassName('site-header')[0].classList.remove('blur')
+    document.getElementsByClassName('sidebar')[0].classList.remove('blur')
+    document.getElementsByClassName('content')[0].classList.remove('blur')
+  } else {
+    modalDiv.style.visibility = 'visible'
+    document.getElementsByClassName('site-header')[0].classList.add('blur')
+    document.getElementsByClassName('sidebar')[0].classList.add('blur')
+    document.getElementsByClassName('content')[0].classList.add('blur')
+    renderCartItems()
+  }
+}
+
+// hackey way to blur background
+document.getElementsByClassName('sidebar')[0].addEventListener('click', function() {
+  if (modalDiv.style.visibility == 'visible') {
+    modalDiv.style.visibility = 'hidden'
+    document.getElementsByClassName('site-header')[0].classList.remove('blur')
+    document.getElementsByClassName('sidebar')[0].classList.remove('blur')
+    document.getElementsByClassName('content')[0].classList.remove('blur')
+  }
 })
 
-function addItemToCart(itemParent) {
-  const itemName = itemParent.getElementsByClassName('item-name')[0].textContent,
-      itemPrice = itemParent.getElementsByClassName('item-price')[0].textContent,
-      cartItemCount = document.getElementById('cart-item-count'),
-      cartItemSection = document.getElementById('cart-item-section')
-
-  cartItemCount.textContent = parseInt(cartItemCount.textContent) + 1
-
-	const cartItemElement = document.createElement('li')
-  const cartItemName = document.createElement('span')
-  const cartItemPrice = document.createElement('span')
-
-	cartItemElement.classList.add('cart-item')
-	cartItemName.classList.add('cart-item-name')
-	cartItemName.textContent = itemName
-	cartItemPrice.classList.add('cart-item-price')
-	cartItemPrice.textContent = itemPrice
-
-	cartItemElement.appendChild(cartItemName)
-	cartItemElement.appendChild(cartItemPrice)
-
-	cartItemSection.appendChild(cartItemElement)
-}
-
-function calculateTotal() {
-  var prices = document.getElementsByClassName('cart-item-price')
-  var cartPrices = []
-  for(var i = 0; i < prices.length; i++) {
-    let itemPrice = prices[i].innerHTML
-    cartPrices.push(itemPrice)
+document.getElementsByClassName('content')[0].addEventListener('click', function() {
+  if (modalDiv.style.visibility == 'visible') {
+    modalDiv.style.visibility = 'hidden'
+    document.getElementsByClassName('site-header')[0].classList.remove('blur')
+    document.getElementsByClassName('sidebar')[0].classList.remove('blur')
+    document.getElementsByClassName('content')[0].classList.remove('blur')
   }
-  var cartTotal = 0
-  cartPrices.forEach(priceStr => {
-    var pricey = priceStr.substr(1)
-    var price = parseFloat(pricey)
-    cartTotal +=  price
-  })
-  document.getElementsByClassName('cart-total')[0].innerHTML = '$' + cartTotal.toFixed(2)
-}
-
-function clearCart() {
-  var cartSection = document.getElementById('cart-item-section')
-  cartSection.remove()
-  calculateTotal()
-  document.getElementById('cart-item-count').textContent = 0 
-}
+})
+// =================== //
