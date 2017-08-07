@@ -129,6 +129,7 @@ body {
 .add-to-cart-btn {
   cursor: pointer;
 }
+
 .modal-div {
   box-sizing: border-box;
   display: flex;
@@ -150,13 +151,16 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
 .shopping-cart-header h2 {
   margin-left: 1em;
 }
+
 .close-cart-btn {
   margin-right: 1em;
   background-color: red;
 }
+
 .shopping-cart-ul-contain {
   display: flex;
   width: 100%;
@@ -177,6 +181,7 @@ body {
   justify-content: space-around;
   align-items: flex-start;
 }
+
 .shopping-cart-ul li {
   width: 100%;
   display: flex;

@@ -18,7 +18,7 @@ function pushToCart(product, price) {
   cart.push(product)
   cart.push(price)
   appendToList(product, price)
-  cartMath()
+  calculateCartTotal()
   addCartCount()
 }
 
@@ -31,7 +31,7 @@ function appendToList(name, price) {
   shoppingCart.appendChild(listItem)
 }
 
-function cartMath() {
+function calculateCartTotal() {
   let calculatedTotal = 0
   for (let i = 0; i < cart.length; i++) {
     if(i % 2 == 0) {
@@ -48,7 +48,7 @@ function cartMath() {
 function clearCart() {
   cart = []
   clearCartContents()
-  cartMath()
+  calculateCartTotal()
 }
 
 function toggleModal() {
