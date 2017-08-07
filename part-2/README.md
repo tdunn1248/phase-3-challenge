@@ -11,5 +11,5 @@
 ```psql grocery_store -f ./models/load-data.sql```
 
 ## To Setup Test Database:
-1. Load Schema: ```psql grocery_store -f ./test/schema_test.sql```
-2. To populate database: ```psql grocery_store -f ./test/load-test-data.sql```
+1. Load Schema: ```psql grocery_store -f ./test/database/schema_test.sql```
+2. To populate database: ```psql grocery_store -f ./test/database/load-test-data.sql```
