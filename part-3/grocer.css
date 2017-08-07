@@ -55,6 +55,7 @@ body {
 
 .site-header button {
   font-size: 20px;
+  cursor: pointer;
 }
 
 /* SIDEBAR */
@@ -78,7 +79,9 @@ body {
 
 .sidebar li {
   padding: 4px;
+  text-align: center;
 }
+
 
 /* CONTENT */
 .content {
@@ -123,6 +126,9 @@ body {
   flex: 0;
 }
 
+.add-to-cart-btn {
+  cursor: pointer;
+}
 .modal-div {
   box-sizing: border-box;
   display: flex;

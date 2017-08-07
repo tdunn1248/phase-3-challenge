@@ -35,7 +35,7 @@ function cartMath() {
   let calculatedTotal = 0
   for (let i = 0; i < cart.length; i++) {
     if(i % 2 == 0) {
-      // don't worry about it
+      // do nada
     } else {
       const removeSymbol = cart[i].substr(1)
       const productValue = parseFloat(removeSymbol)
@@ -43,23 +43,6 @@ function cartMath() {
     }
   }
   cartTotal.innerHTML = '$' + calculatedTotal.toFixed(2)
-}
-
-function addCartCount() {
-  cartItemCount.textContent = parseInt(cartItemCount.textContent) + 1
-}
-
-function clearCartContents() {
-  if(cart.length === 0) {
-   while( shoppingCart.firstChild ) {
-     shoppingCart.removeChild( shoppingCart.firstChild )
-     resetCartCount()
-    }
-  }
-}
-
-function resetCartCount() {
-  cartItemCount.textContent = parseInt('0.00')
 }
 
 function clearCart() {
@@ -77,6 +60,23 @@ function toggleModal() {
   }
 }
 
+function clearCartContents() {
+  if (cart.length === 0) {
+    while (shoppingCart.firstChild) {
+      shoppingCart.removeChild( shoppingCart.firstChild )
+      resetCartCount()
+    }
+  }
+}
+
+function addCartCount() {
+  cartItemCount.textContent = parseInt(cartItemCount.textContent) + 1
+}
+
+function resetCartCount() {
+  cartItemCount.textContent = parseInt('0.00')
+}
+
 document.getElementsByClassName('sidebar')[0].addEventListener('click', function() {
   if (modalDiv.style.visibility == 'visible') {
     removeBlurr()
@@ -89,7 +89,7 @@ document.getElementsByClassName('content')[0].addEventListener('click', function
   }
 })
 
-// hackey way to blur background
+// hacky way to blur background
 function blurr() {
   document.getElementsByClassName('site-header')[0].classList.add('blur')
   document.getElementsByClassName('sidebar')[0].classList.add('blur')
