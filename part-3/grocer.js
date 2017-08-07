@@ -65,6 +65,7 @@ function resetCartCount() {
 function clearCart() {
   cart = []
   clearCartContents()
+  cartMath()
 }
 
 function toggleModal() {
