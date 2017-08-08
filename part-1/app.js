@@ -6,11 +6,8 @@ const port = 3008
 
 const daysOfWeek = {monday: 1, tuesday:2, wednesday: 3, thursday: 4, friday: 5, saturday: 6, sunday: 7}
 
-// add request.body to request object with every request
 app.use(bodyParser.urlencoded({ extended: false }))
-// only looks at request that have Content-Type set to json
 app.use(bodyParser.json())
-// need bodyparser.text() ?
 
 app.get('/', (request, response) => {
   response.send('<h1>Simple Web App</h1>')
@@ -30,15 +27,20 @@ app.get('/api/days/:day', (request, response) => {
 })
 
 app.post('/api/arrays/concat', (request, response) => {
+  console.log(request.body.string1)
+  console.log(typeof request.body.string1);
   const string1 = request.body.string1
   const string2 = request.body.string2
 
   if(arrayFormattedCorrectly(string1) === false || arrayFormattedCorrectly(string2) === false) {
     response.status(400).json({error: 'Input data should be type Array'})
   } else {
+    console.log('before replace',string1);
+    console.log('before replace',typeof string1);
     const str1 = string1.replace(/[[\]]/g,'')
     const str2 = string2.replace(/[[\]]/g,'')
-
+    console.log('after replace',string1);
+    console.log('after replace', typeof string1);
     const array1 = str1.split(",")
     const array2 = str2.split(",")
 

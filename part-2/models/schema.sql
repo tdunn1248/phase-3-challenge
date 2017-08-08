@@ -3,7 +3,6 @@ DROP TABLE IF EXISTS grocery CASCADE;
 DROP TABLE IF EXISTS orders CASCADE;
 DROP TABLE IF EXISTS orders_detail CASCADE;
 
-
 CREATE TABLE shopper (
   id SERIAL PRIMARY KEY,
   name VARCHAR(50)
@@ -19,13 +18,11 @@ CREATE TABLE grocery (
 CREATE TABLE orders (
   id SERIAL PRIMARY KEY,
   shopper_id integer REFERENCES shopper(id),
-  quanity INT,
   total_cost NUMERIC
 );
 
 CREATE TABLE orders_detail (
   id SERIAL PRIMARY KEY,
   orders_id integer REFERENCES orders(id),
-  -- quanity defaults to 1
   grocery_id integer REFERENCES grocery(id)
 );

@@ -27,7 +27,7 @@ const userInput = (command, argument) => {
         .then( results => {
           formatTable(results)
           results.forEach(record => {
-            console.log(record.name,"   ", record.quanity)
+            console.log(record.name,"   ", record.count)
           })
         }).catch(e => console.error(e))
       break
