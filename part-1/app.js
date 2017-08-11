@@ -7,7 +7,6 @@ const port = 3008
 const daysOfWeek = {monday: 1, tuesday:2, wednesday: 3, thursday: 4, friday: 5, saturday: 6, sunday: 7}
 
 app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
 
 app.get('/', (request, response) => {
   response.send('<h1>Simple Web App</h1>')
@@ -29,10 +28,13 @@ app.get('/api/days/:day', (request, response) => {
 app.post('/api/arrays/concat', (request, response) => {
   const string1 = request.body.string1
   const string2 = request.body.string2
-
+  console.log(Array.isArray(request.body.string1))
+  console.log(string1)
+  console.log(typeof string1)
   if(arrayFormattedCorrectly(string1) === false || arrayFormattedCorrectly(string2) === false) {
     response.status(400).json({error: 'Input data should be type Array'})
   } else {
+
     const str1 = string1.replace(/[[\]]/g,'')
     const str2 = string2.replace(/[[\]]/g,'')
     const array1 = str1.split(",")
